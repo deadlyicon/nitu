@@ -1,0 +1,132 @@
+html, body, .row, .column, .container-fluid {
+  min-height: 100% !important;
+  height: 100%;
+}
+
+body {
+  background-color: #f3f3f4;
+}
+
+.column {
+  padding: 0;
+}
+
+.sideMenu {
+  background-color: #333333;
+}
+
+.sideMenuHeader {
+  color: rgb(230, 230, 230);
+  font-size: 2.2em;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.sideMenu a {
+  color: rgb(200, 200, 200);
+  display: block;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  padding: 12px 20px;
+}
+
+.sideMenu .active a {
+  background-color: rgb(200, 200, 200);
+  color: rgb(80, 80, 80);
+  font-size: 1em;
+}
+
+.sideMenu a:hover {
+  background-color: rgb(170, 170, 170);
+  color: #fff;
+  display: block;
+  font-weight: bold;
+}
+.sideMenu .glyphicon {
+  margin-right: 6px;
+}
+
+.searchAndWelcomeArea {
+  background-color: #fff;
+  border-bottom: 1px solid #e7eaec;
+  font-size: 1.1em;
+  padding-left: 10px;
+  padding-right: 40px;
+}
+
+.inline {
+  display: inline-block;
+  max-height: 55px;
+  line-height: 50px;
+}
+
+.searchBox {
+  border: 0;
+}
+
+.welcomeArea {
+  float: right;
+  font-size: 16px;
+}
+
+.blockContent {
+  background-color: red;
+}
+
+.content {
+  margin: 20px 20px 50px 20px;
+  background-color: #fff;
+  border-top: 4px solid #e7eaec;
+  padding: 15px;
+}
+.content header {
+  border-bottom: 1px solid #f3f3f4;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+}
+
+.page-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.content-inner {
+  padding: 20px;/
+}
+
+.form-wrapper {
+  background-color: #eee;
+  padding: 20px;
+}
+
+.adminFooter {
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  color: #676a6c;
+  font-size: 12px;
+  padding: 10px 30px;
+  width: 100%;
+}
+
+.post-head {
+  margin-bottom: 6px;
+}
+
+.post-head a {
+  margin-right: 5px;
+}
+
+.post-title {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.comment-dash {
+  margin-bottom: 5px;
+}
+
+.comment-date-dash {
+  color: #999;
+}
