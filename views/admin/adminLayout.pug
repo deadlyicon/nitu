@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+    title Admin Area
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/adminDefault.css')
+  body
+    .container-fluid
+      .row
+        .col-md-2.column.sideMenu
+          h1.sideMenuHeader Navigation
+          ul.list-unstyled
+            li.active
+              a(href='/admin')
+                span.glyphicon.glyphicon-th(aria-hidden='true')
+                span Dashboard
+            li
+              a(href='/admin/posts')
+                span.glyphicon.glyphicon-list-alt(aria-hidden='true')
+                span Posts
+            li
+              a(href='/admin/new')
+                span.glyphicon.glyphicon-pencil(aria-hidden='true')
+                span New Post
+            li
+              a(href='/admin/comments')
+                span.glyphicon.glyphicon-comment(aria-hidden='true')
+                span Comments
+            li
+              a(href='/admin/logout')
+                span.glyphicon.glyphicon-log-out(aria-hidden='true')
+                span Logout
+        .col-md-10.column
+          .searchAndWelcomeArea
+            form.inline(action='/search' method='post')
+              input.searchBox(type='text' name='searchContent' placeholder='Search...')
+            .welcomeArea
+              p.inline Nitu's Admin Area
+          block content
+          footer.clearfix.adminFooter
+            .pull-left
+              strong Copyright &copy; 2017
+            .pull-right admin system

@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Login
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+  body
+    .container
+      h1.text-center Login
+      form(action='/admin/login' method='post')
+        .form-group.col-xs-12.col-md-6.col-md-offset-3
+          label(for='email') Email
+          input(type='email' name='email' class='form-control' id='email' placeholder='Email' autofocus)
+        .form-group.col-xs-12.col-md-6.col-md-offset-3
+          label(for='password') Password
+          input(type='password' name='password' class='form-control' id='password' placeholder='Password' required)
+        .col-xs-12
+          button(type='submit' class='btn btn-primary center-block') Login
