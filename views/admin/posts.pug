@@ -1,0 +1,17 @@
+extends adminLayout
+
+block content
+  .content
+    header
+      h2.page-title Posts
+    each post in posts
+      .post-head.clearfix
+        .post-title.pull-left= post.title
+        span.pull-right
+          a.btn.btn-xs.btn-warning(href='#' role='button') Edit
+          a.btn.btn-xs.btn-danger(href='#' role='button') Delete
+      p.comment-dash= post.video_url
+      p.comment-dash= post.content
+      .clearfix
+        small.comment-date-dash.pull-left= post.created_on
+      hr

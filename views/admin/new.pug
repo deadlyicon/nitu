@@ -1,0 +1,20 @@
+extends adminLayout
+
+block content
+  .content
+    header
+      h2.page-title Create New Post
+    .content-inner
+      .form-wrapper
+        form(action='/admin/new' method='post')
+          .form-group
+            label.sr-only Title
+            input.form-control(type='text' name='title' placeholder='Title')
+          .form-group
+            label.sr-only YouTube URL
+            input.form-control(type='text' name='videoUrl' placeholder='YouTube URL')
+          .form-group
+            label.sr-only Article
+            textarea.form-control(rows='15' name='content' placeholder='Article')
+          .clearfix
+            button.btn.btn-primary.pull-right(type='submit') Save
