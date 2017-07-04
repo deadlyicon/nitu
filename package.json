@@ -1,0 +1,40 @@
+{
+  "name": "nitu",
+  "version": "1.0.0",
+  "description": "Personal Site for Nitu Sidhu",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "db:create": "createdb nitu",
+    "db:drop": "dropdb nitu",
+    "db:reset": "dropdb nitu && createdb nitu && npm run db:schema",
+    "db:schema": "psql -d nitu < database/schema.sql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/je-lopez/nitu.git"
+  },
+  "keywords": [
+    "Nitu",
+    "Sidhu",
+    "Online",
+    "Marketing",
+    "Specialist"
+  ],
+  "author": "Jorge E Lopez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/je-lopez/nitu/issues"
+  },
+  "homepage": "https://github.com/je-lopez/nitu#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "cookie-session": "^2.0.0-beta.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "path": "^0.12.7",
+    "pg-promise": "^6.3.1",
+    "pug": "^2.0.0-rc.2"
+  }
+}
