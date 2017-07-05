@@ -24,16 +24,39 @@ block content
     .align-self-center.text-center
       //- span.author-name Nitu Sidhu
       h1 Online Marketing Specialist
-  .container
+  .container-fluid
     .row.about
       .col
         h2.text-center Nitu Knows Marketing
         p There are 198 million ad blockers in the world. The thing is, people don't hate ads, they hate bad experiences. Don't believe me? People remember Budweiser's dog and horse from a 2014 Superbowl commercial more than the game itself. The Lego Movie was essentially a 2-hour advertisement and it generated $470 million at the box office.
         p In marketing, creating a great experience is paramount. I'm a digital marketer who specializes in content, SEO, online advertising, UX design, and email marketing. My focus in the past 5 years has been specifically on small, local businesses as I have a passion in enriching the local community and to promote entrepreneurialism.
         p I listen to marketing podcasts like Call to Action, Marketing Week by Alan Harte, and Noah Kagan presents. I wish to one day write with as much vigor as Mark Ritson from Marketing Week.
-    .row.posts
-      .col-xs-12
-        h4 Turn Your Property Management Services Page into a Lead Generation Machine
+    .row
+      .col-md-8
+        h3 Turn Your Property Management Services Page into a Lead Generation Machine
         .embed-responsive.embed-responsive-16by9
-          iframe(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+          iframe.embed-responsive-item(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
+      .col-md-4
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+    .row
+      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
+        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
+      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
+        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
+      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
+        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
+      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
+        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
+      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
+        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
+    .row.contact
+      h2 Contact Me
+      p Have any questions or comments?
+      form(action='/' method='post')
+        input(type='text' name='name' placeholder='Full Name')
+        input(type='email' name='email' placeholder='Email')
+        textarea(type='text' name='message' placeholder='Message' col='15')
+        button(type='submit') Send
+  footer
+    a(href='#') Nitu Sidhu
+    a(href='#') &copy; 2017

@@ -1,7 +1,7 @@
 const pgp = require('pg-promise')()
 const database = pgp({database: 'nitu'})
 
-const getSalt = adminEmail => {
+const verifyEmail = adminEmail => {
   const query = `
     SELECT
       salt
@@ -52,7 +52,7 @@ const createPost = (title, videoUrl, content) => {
 }
 
 module.exports = {
-  getSalt,
+  verifyEmail,
   verifyPassword,
   getPosts,
   createPost

@@ -1,11 +1,9 @@
 require('dotenv').config()
-
 const express = require('express')
+const path = require('path')
 const bodyParser = require('body-parser')
 const cookieSession = require('cookie-session')
 const childProcess = require('child_process')
-const path = require('path')
-const bcrypt = require('bcrypt')
 const database = require('./database/database')
 const admin = require('./routes/admin')
 const port = process.env.PORT || 3000
@@ -36,7 +34,7 @@ app.get('/', (req, res) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack)
-  res.status('500').send('There was an error: ', err)
+  res.status('500').send('There was an ERROR: ', err)
 })
 
 app.listen(port, () => {
