@@ -2,7 +2,7 @@
   "name": "nitu",
   "version": "1.0.0",
   "description": "Personal Site for Nitu Sidhu",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "db:create": "createdb nitu",

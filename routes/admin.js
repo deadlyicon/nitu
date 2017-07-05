@@ -1,64 +1,48 @@
 const express = require('express')
-const authenticate = require('./authenticate')
+const bcrypt = require('bcrypt')
 const database = require('../database/database')
+
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  if (!req.session.user)
+// verifies admin session
+// should this live in a diff file?
+const isLoggedIn = (req, res, next) => {
+  if (!req.session.user) {
     res.redirect('/admin/login')
-  else
-    res.render('admin/admin')
-})
-
-router.get('/login', (req, res) => {
-  res.render('admin/login')
-})
-
-router.post('/login', (req, res) => {
-  const adminData = {
-    email: req.body.email,
-    password: req.body.password
   }
+  else {
+    next()
+  }
+}
 
-  authenticate(adminData)
-    .then(verifiedAdmin => {
-      if (!verifiedAdmin) {
-        res.redirect('/admin/login')
-      }
-      else {
-        req.session.user = verifiedAdmin.id
-        res.redirect('/admin')
-      }
+// avoids rendering login page if already logged in
+// this is only used for /login, should it live there?
+const loggedIn = (req, res, next) => {
+  if (!req.session.user) {
+    next()
+  }
+  else {
+    res.redirect('/admin')
+  }
+}
+
+router.get('/', isLoggedIn, (req, res) => {
+  res.render('admin/admin')
+})
+
+router.get('/posts', isLoggedIn, (req, res) => {
+  database.getPosts()
+    .then(posts => {
+      res.render('admin/posts', { posts: posts })
     })
     .catch(error => {
-      console.error('server error:1', error)
-      res.redirect('/admin/login')
+      console.error('error retrieving posts:', error)
+      res.redirect('/admin')
     })
 })
 
-router.get('/logout', (req, res) => {
-  req.session.user = null
-  res.redirect('/')
-})
-
-router.get('/posts', (req, res) => {
-  if (!req.session.user)
-    res.redirect('/admin/login')
-  else
-    database.getPosts()
-      .then(posts => {
-        res.render('admin/posts', { posts: posts })
-      })
-      .catch(error => {
-        console.error('server error:2', error)
-      })
-})
-
-router.get('/new', (req, res) => {
-  if (!req.session.user)
-    res.redirect('/admin/login')
-  else
-    res.render('admin/new')
+router.get('/new', isLoggedIn, (req, res) => {
+  res.render('admin/new')
 })
 
 router.post('/new', (req, res) => {
@@ -69,9 +53,38 @@ router.post('/new', (req, res) => {
       res.redirect('/admin/posts')
     })
     .catch(error => {
-      console.log('server error:3', error)
+      console.error('error creating post:', error)
       res.redirect('/admin')
     })
+})
+
+router.get('/login', loggedIn, (req, res) => {
+  res.render('admin/login')
+})
+
+router.post('/login', (req, res) => {
+  const { email, password } = req.body
+
+  database.verifyEmail(email)
+    .then(adminSalt => {
+      const hashedPassword = bcrypt.hashSync(password, adminSalt.salt)
+
+      return database.verifyPassword(email, hashedPassword)
+    })
+    .then(admin => {
+      req.session.user = admin.id
+      console.log('logging user in -before redirect-', req.session.user)
+      res.redirect('/admin')
+    })
+    .catch(error => {
+      console.error('error logging in', error)
+      res.redirect('/admin/login')
+    })
+})
+
+router.get('/logout', (req, res) => {
+  req.session.user = null
+  res.redirect('/')
 })
 
 module.exports = router

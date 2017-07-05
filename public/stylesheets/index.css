@@ -7,7 +7,7 @@ body {
 }
 
 .row {
-  padding: 4rem 0;
+  padding: 4rem;
 }
 
 nav {
@@ -36,7 +36,7 @@ header h1 {
 }
 
 .about {
-  background-color: rgb(253, 253, 253);
+  background-color: rgb(254, 254, 254);
 }
 
 .about h2 {
@@ -44,12 +44,6 @@ header h1 {
   letter-spacing: 1px;
   margin-bottom: 1.5rem;
 }
-
-/*.about h3 {
-  text-transform: uppercase;
-  font-family: 'Bellefair', serif;
-  letter-spacing: 2px;
-}*/
 
 .about p {
   font-family: 'Open Sans', sans-serif;
@@ -59,6 +53,10 @@ header h1 {
 
 .posts {
   background-color: rgb(251, 251, 251);
+}
+
+.contact {
+  background-color: red;
 }
 
 /*Small devices (landscape phones, 576px and up)*/
@@ -73,15 +71,13 @@ header h1 {
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
-/*nav a:hover {
-margin-top: -5px;
-padding-bottom: 13px;
-}*/
+  /*nav a:hover {
+  margin-top: -5px;
+  padding-bottom: 13px;
+  }*/
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
 
 }
-
-/* iframe(src='https://www.youtube.com/embed/kDuSbebij54?rel=0&frameborder=0' width='450' height='253' allowfullscreen)*/
