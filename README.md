@@ -2,9 +2,11 @@
 
 ### How to set up
 1. `git clone https://github.com/je-lopez/nitu`
-2. `npm install`
-3. `npm run db:reset`
-4. `npm run start`
+2. `touch .env`
+3. add SECRET_KEY & SECRET_KEY_2
+4. `npm install`
+5. `npm run db:reset`
+6. `npm run start`
 
 **Note: the inserts in database/schema.sql are here only for the review**
 
