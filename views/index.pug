@@ -2,14 +2,13 @@ extends layout
 
 block content
   nav.navbar.navbar-toggleable-md.navbar-light.fixed-top
-    button.navbar-toggler.navbar-toggler-right(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo02' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
+    button.navbar-toggler.navbar-toggler-right(type='button' data-toggle='collapse' data-target='#navbar' aria-controls='navbar' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     a.navbar-brand(href='#') N | S
-    #navbarTogglerDemo02.collapse.navbar-collapse
+    #navbar.collapse.navbar-collapse
       ul.navbar-nav.mr-auto.mt-2.mt-md-0
         li.nav-item.active
-          a.nav-link(href='#')
-            | Home
+          a.nav-link(href='#') Home
             span.sr-only (current)
         li.nav-item
           a.nav-link(href='#') About
@@ -18,45 +17,48 @@ block content
         li.nav-item
           a.nav-link(href='#') Contact
       form.form-inline.my-2.my-lg-0
-        input.form-control.mr-sm-2(type='email', placeholder='Email')
+        input.form-control.mr-sm-2(type='email', name='email' placeholder='Email')
         button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Subscribe
-  header.d-flex.justify-content-center
-    .align-self-center.text-center
-      //- span.author-name Nitu Sidhu
-      h1 Online Marketing Specialist
-  .container-fluid
-    .row.about
-      .col
-        h2.text-center Nitu Knows Marketing
-        p There are 198 million ad blockers in the world. The thing is, people don't hate ads, they hate bad experiences. Don't believe me? People remember Budweiser's dog and horse from a 2014 Superbowl commercial more than the game itself. The Lego Movie was essentially a 2-hour advertisement and it generated $470 million at the box office.
-        p In marketing, creating a great experience is paramount. I'm a digital marketer who specializes in content, SEO, online advertising, UX design, and email marketing. My focus in the past 5 years has been specifically on small, local businesses as I have a passion in enriching the local community and to promote entrepreneurialism.
-        p I listen to marketing podcasts like Call to Action, Marketing Week by Alan Harte, and Noah Kagan presents. I wish to one day write with as much vigor as Mark Ritson from Marketing Week.
-    .row
-      .col-md-8
-        h3 Turn Your Property Management Services Page into a Lead Generation Machine
-        .embed-responsive.embed-responsive-16by9
-          iframe.embed-responsive-item(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
-      .col-md-4
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-    .row
-      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
-        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
-      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
-        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
-      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
-        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
-      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
-        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
-      .col-sm-4.col-md-3(onClick="document.querySelector('.video-frame').src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0'")
-        iframe.video-frame(src='https://www.youtube.com/embed/qVoqPuGneSE?rel=0&frameborder=0' allowfullscreen)
-    .row.contact
+  header
+    .d-flex.justify-content-center
+      .align-self-center.text-center
+        h1 Online Marketing Specialist
+  section
+    h2.text-center Nitu Knows Marketing
+    each paragraph in paragraphs
+      p= paragraph.content
+  main
+    .container
+      .row
+        .col-md-8
+          h3= latestPost.title
+          .embed-responsive.embed-responsive-16by9
+            iframe.embed-responsive-item(src= latestPost.video_url, frameborder='0' allowfullscreen)
+        .col-md-4
+          p= latestPost.content
+      .row
+        each post in posts
+          .col-xs-6.col-sm-4.col-md-3
+            .embed-responsive.embed-responsive-16by9
+              iframe.embed-responsive-item(src= post.video_url, frameborder='0' allowfullscreen)
+            p= post.title
+            p= post.content
+  section
+    .container-fluid
       h2 Contact Me
       p Have any questions or comments?
       form(action='/' method='post')
-        input(type='text' name='name' placeholder='Full Name')
-        input(type='email' name='email' placeholder='Email')
-        textarea(type='text' name='message' placeholder='Message' col='15')
-        button(type='submit') Send
+        input.form-control(type='text' name='name' placeholder='Full Name')
+        input.form-control(type='email' name='email' placeholder='Email')
+        textarea.form-control(type='text' name='message' placeholder='Message' rows='6')
+        button.btn.btn-default(type='submit') Send
   footer
-    a(href='#') Nitu Sidhu
-    a(href='#') &copy; 2017
+    .container-fluid
+      .row
+        .col-xs
+          a(href='#') &copy; 2017
+          a(href='#') Nitu Sidhu
+        .col-xs N | S
+        .col-xs
+          a(href='#') Terms of Service
+          a(href='#') Contact

@@ -4,11 +4,11 @@
   "description": "Personal Site for Nitu Sidhu",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "db:create": "createdb nitu",
     "db:drop": "dropdb nitu",
     "db:reset": "dropdb nitu && createdb nitu && npm run db:schema",
-    "db:schema": "psql -d nitu < database/schema.sql"
+    "db:schema": "psql -d nitu < database/schema.sql",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
