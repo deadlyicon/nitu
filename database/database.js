@@ -6,7 +6,7 @@ const verifyEmail = adminEmail => {
     SELECT
       salt
     FROM
-      admin
+      admins
     WHERE
       email = $1
   `
@@ -19,7 +19,7 @@ const verifyPassword = (email, password) => {
     SELECT
       id
     FROM
-      admin
+      admins
     WHERE
       email = $1 AND password = $2
   `
@@ -51,9 +51,21 @@ const createPost = (title, videoUrl, content) => {
   return database.one(query, [title, videoUrl, content])
 }
 
+const getParagraphs = () => {
+  const query = `
+    SELECT
+      *
+    FROM
+      paragraphs
+  `
+
+  return database.many(query)
+}
+
 module.exports = {
   verifyEmail,
   verifyPassword,
   getPosts,
-  createPost
+  createPost,
+  getParagraphs
 }

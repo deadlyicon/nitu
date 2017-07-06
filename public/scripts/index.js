@@ -1,15 +1,1 @@
-// $(document).ready(function () {
-//     $(".arrow-right").on("click", function (event) {
-//         event.preventDefault();
-//         $(".video-list-container").stop().animate({
-//             scrollLeft: "+=336"
-//         }, 750);
-//     });
-
-//     $(".arrow-left").on("click", function (event) {
-//         event.preventDefault();
-//         $(".video-list-container").stop().animate({
-//             scrollLeft: "-=336"
-//         }, 750);
-//     });
-// });
+// document.querySelector('.video-frame').src='https://www.youtube.com/embed/EWT7tK0tL8U?rel=0&frameborder=0'")

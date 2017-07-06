@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const cookieSession = require('cookie-session')
 const childProcess = require('child_process')
 const database = require('./database/database')
+const index = require('./routes/index')
 const admin = require('./routes/admin')
 const port = process.env.PORT || 3000
 
@@ -20,17 +21,8 @@ app.use(cookieSession({
   keys: [process.env.SECRET_KEY, process.env.SECRET_KEY_2],
   maxAge: 2 * 60 * 60 * 1000 // expires in 2 hours
 }))
+app.use('/', index)
 app.use('/admin', admin)
-
-app.get('/', (req, res) => {
-  database.getPosts()
-    .then(posts => {
-      res.render('index', { posts: posts })
-    })
-    .catch(error => {
-      console.log('error getting posts', error)
-    })
-})
 
 app.use((err, req, res, next) => {
   console.error(err.stack)
