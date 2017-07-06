@@ -11,7 +11,7 @@
 **Note: the inserts in database/schema.sql are here only for the review**
 
 ### How to log in
-** address:** yaguneetsidhu@gmail.com
+**address:** yaguneetsidhu@gmail.com
 **password:** I'll slack you
 
 IGNORE THIS
