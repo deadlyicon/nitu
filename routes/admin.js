@@ -17,6 +17,9 @@ const isLoggedIn = (req, res, next) => {
 
 // avoids rendering login page if already logged in
 // this is only used for /login, should it live there?
+
+// naw, just put it in the one place you're using it, if it's not shared. 
+// I think you can move `isLoggedIn` and `loggedIn` into one middleware
 const loggedIn = (req, res, next) => {
   if (!req.session.user) {
     next()
@@ -30,45 +33,42 @@ router.get('/', isLoggedIn, (req, res) => {
   res.render('admin/admin')
 })
 
-router.get('/posts', isLoggedIn, (req, res) => {
+router.get('/posts', isLoggedIn, (req, res, next) => {
   database.getPosts()
     .then(posts => {
       res.render('admin/posts', { posts: posts })
     })
-    .catch(error => {
-      console.error('error retrieving posts:', error)
-      res.redirect('/admin')
-    })
+    .catch(next)
 })
 
 router.get('/new', isLoggedIn, (req, res) => {
   res.render('admin/new')
 })
 
-router.post('/new', (req, res) => {
+router.post('/new', (req, res, next) => {
   const { title, videoUrl, content } = req.body
 
   database.createPost(title, videoUrl, content)
-    .then(result => {
-      res.redirect('/admin/posts')
+    .then(post => {
+      res.redirect('/admin/posts/'+post.id)
     })
-    .catch(error => {
-      console.error('error creating post:', error)
-      res.redirect('/admin')
-    })
+    .catch(next)
 })
 
-router.get('/login', loggedIn, (req, res) => {
-  res.render('admin/login')
+router.get('/login', (req, res) => {
+  if (req.session.user) {
+    res.redirect('/admin')
+  } else {
+    res.render('admin/login')
+  }
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
   const { email, password } = req.body
 
   database.verifyEmail(email)
     .then(adminSalt => {
       const hashedPassword = bcrypt.hashSync(password, adminSalt.salt)
-
       return database.verifyPassword(email, hashedPassword)
     })
     .then(admin => {
@@ -76,10 +76,7 @@ router.post('/login', (req, res) => {
       console.log('logging user in -before redirect-', req.session.user)
       res.redirect('/admin')
     })
-    .catch(error => {
-      console.error('error logging in', error)
-      res.redirect('/admin/login')
-    })
+    .catch(next)
 })
 
 router.get('/logout', (req, res) => {
