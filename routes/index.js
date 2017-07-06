@@ -2,7 +2,7 @@ const express = require('express')
 const database = require('../database/database')
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   Promise.all([
     database.getPosts(),
     database.getParagraphs()
@@ -14,9 +14,7 @@ router.get('/', (req, res) => {
       latestPost: data[0][0]
     })
   })
-  .catch(error => {
-    console.log('error getting posts', error)
-  })
+  .catch(next)
 })
 
 module.exports = router
