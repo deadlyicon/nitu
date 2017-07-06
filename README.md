@@ -2,8 +2,8 @@
 
 ### How to set up
 1. `git clone https://github.com/je-lopez/nitu`
-2. `touch .env`
-3. add SECRET_KEY & SECRET_KEY_2
+2. `cd nitu` and `touch .env`
+3. in .env, add SECRET_KEY & SECRET_KEY_2
 4. `npm install`
 5. `npm run db:reset`
 6. `npm run start`
